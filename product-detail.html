@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - UEH Merch</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="product-detail.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top" id="mainNav">
+        <div class="container-fluid px-3 px-lg-5">
+            <a class="navbar-brand fw-semibold fs-4" href="index.html" style="color: #111;">UEH Merch</a>
+            
+            <div class="d-flex align-items-center gap-3">
+                <a href="index.html" class="btn btn-outline-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H6m0 0l6 6m-6-6l6-6"/>
+                    </svg>
+                    Back to Shop
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail-section py-5">
+        <div class="container-fluid">
+            <div class="row g-0 min-vh-100">
+                <!-- Left Side - Product Image & Info (50%) -->
+                <div class="col-lg-6 position-relative">
+                    <!-- Blue Accent Line -->
+                    <div class="blue-accent-line position-absolute"></div>
+                    
+                    <div class="product-image-info-container h-100 d-flex flex-column">
+                        <!-- Product Image -->
+                        <div class="product-image-area flex-grow-1 d-flex align-items-center justify-content-center p-5">
+                            <div class="product-showcase">
+                                <img id="productImage" src="demo.png" alt="Product" class="img-fluid product-main-img">
+                            </div>
+                        </div>
+                        
+                        <!-- Product Information -->
+                        <div class="product-info-area p-5">
+                            <div class="product-breadcrumb mb-3">
+                                <small class="text-muted">Home / Products / <span id="productCategory">Accessories</span></small>
+                            </div>
+                            
+                            <h1 id="productTitle" class="product-detail-title mb-3">Black Dashers</h1>
+                            
+                            <div class="product-rating-price mb-4">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <div class="rating-stars" id="productRating">
+                                        <!-- Stars will be populated by JS -->
+                                    </div>
+                                    <span class="rating-count text-muted" id="reviewCount">(56 reviews)</span>
+                                </div>
+                                <div class="product-price-large" id="productPrice">$64</div>
+                            </div>
+                            
+                            <div class="product-description-detail mb-4">
+                                <h6 class="fw-semibold mb-2">Description</h6>
+                                <p id="productDescription" class="text-muted lh-lg">
+                                    The Black Dasher reimagines the traditional running shoe with natural materials engineered for serious performance. Crafted with premium materials and attention to detail.
+                                </p>
+                            </div>
+                            
+                            <div class="product-specifications">
+                                <h6 class="fw-semibold mb-3">Specifications</h6>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="spec-item">
+                                            <small class="text-muted d-block">Material</small>
+                                            <span class="fw-medium">Premium Cotton</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="spec-item">
+                                            <small class="text-muted d-block">Origin</small>
+                                            <span class="fw-medium">Vietnam</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="spec-item">
+                                            <small class="text-muted d-block">Care</small>
+                                            <span class="fw-medium">Machine Wash</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="spec-item">
+                                            <small class="text-muted d-block">Warranty</small>
+                                            <span class="fw-medium">1 Year</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Purchase Options (50%) -->
+                <div class="col-lg-6 bg-light">
+                    <div class="purchase-container h-100 d-flex flex-column justify-content-center p-5">
+                        <div class="purchase-content">
+                            <!-- Size Selection -->
+                            <div class="mb-4">
+                                <h6 class="fw-semibold mb-3">Select Size</h6>
+                                <div class="size-options-detail" id="sizeOptions">
+                                    <!-- Size options will be populated by JS -->
+                                </div>
+                            </div>
+                            
+                            <!-- Color Selection -->
+                            <div class="mb-4">
+                                <h6 class="fw-semibold mb-3">Select Color</h6>
+                                <div class="color-options-detail" id="colorOptions">
+                                    <!-- Color options will be populated by JS -->
+                                </div>
+                            </div>
+                            
+                            <!-- Quantity -->
+                            <div class="mb-4">
+                                <h6 class="fw-semibold mb-3">Quantity</h6>
+                                <div class="quantity-selector">
+                                    <button class="btn btn-outline-secondary" onclick="changeQuantity(-1)">-</button>
+                                    <input type="number" id="quantity" value="1" min="1" max="10" class="form-control text-center">
+                                    <button class="btn btn-outline-secondary" onclick="changeQuantity(1)">+</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Total Price -->
+                            <div class="total-price-section mb-4 p-3 bg-white rounded">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-medium">Total:</span>
+                                    <span class="total-price fs-4 fw-bold text-primary" id="totalPrice">$64</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="action-buttons">
+                                <button class="btn btn-primary btn-lg w-100 mb-3 rounded-pill" onclick="addToCart()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                        <circle cx="8" cy="21" r="1"></circle>
+                                        <circle cx="19" cy="21" r="1"></circle>
+                                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57L20.5 9H5.12"></path>
+                                    </svg>
+                                    Add to Cart
+                                </button>
+                                
+                                <button class="btn btn-dark btn-lg w-100 mb-3 rounded-pill" onclick="buyNow()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"></path>
+                                    </svg>
+                                    Buy Now
+                                </button>
+                                
+                                <button class="btn btn-outline-secondary w-100 rounded-pill" onclick="addToWishlist()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                    Add to Wishlist
+                                </button>
+                            </div>
+                            
+                            <!-- Additional Info -->
+                            <div class="additional-info mt-4 pt-4 border-top">
+                                <div class="info-item d-flex align-items-center mb-2">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    </svg>
+                                    <small class="text-muted">Free shipping within HCMC</small>
+                                </div>
+                                <div class="info-item d-flex align-items-center mb-2">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                        <path d="M9 12l2 2 4-4"></path>
+                                        <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path>
+                                    </svg>
+                                    <small class="text-muted">30-day return policy</small>
+                                </div>
+                                <div class="info-item d-flex align-items-center">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-2">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    </svg>
+                                    <small class="text-muted">Secure payment guaranteed</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="product-detail.js"></script>
+</body>
+</html>

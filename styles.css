@@ -1,0 +1,596 @@
+/* Custom CSS for UEH Merch Store - Apple-inspired Design */
+
+/* Import Inter font and set base styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #111;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+/* Navigation Styles */
+#mainNav {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    padding: 1rem 0;
+}
+
+#mainNav.scrolled {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+}
+
+.navbar-brand {
+    font-weight: 600 !important;
+    letter-spacing: -0.025em;
+}
+
+.navbar-nav .nav-link {
+    color: #111 !important;
+    font-weight: 400;
+    font-size: 0.95rem;
+    padding: 0.5rem 0 !important;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #0F766E !important;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #0F766E;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Button styles */
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+    transform: translateZ(0);
+}
+
+.btn-dark {
+    background-color: #111;
+    border-color: #111;
+}
+
+.btn-dark:hover {
+    background-color: #333;
+    border-color: #333;
+    transform: translateY(-1px);
+}
+
+.btn-outline-dark {
+    color: #111;
+    border-color: #111;
+}
+
+.btn-outline-dark:hover {
+    background-color: #111;
+    border-color: #111;
+    transform: translateY(-1px);
+}
+
+.btn-link {
+    color: #111 !important;
+    transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+    color: #0F766E !important;
+}
+
+/* Focus styles for accessibility */
+.btn:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #0F766E;
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+/* Hero Section Animations */
+.hero-section {
+    position: relative;
+}
+
+/* Apple-style floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Scroll indicator animation */
+@keyframes scroll {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(-50%) translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Hero background with parallax effect */
+.hero-background {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+/* Glass morphism effects for hero cards */
+.info-card {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hero stats styling */
+.hero-stats .stat-item {
+    text-align: center;
+}
+
+.hero-stats .h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.hero-stats small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Enhanced hero content animations */
+.hero-content .badge {
+    animation: fadeIn 1s ease-out 0.2s both;
+}
+
+.hero-content h1 {
+    animation: fadeIn 1.2s ease-out 0.4s both;
+}
+
+.hero-content .lead {
+    animation: slideUp 1s ease-out 0.6s both;
+}
+
+.hero-actions {
+    animation: slideUp 1s ease-out 0.8s both;
+}
+
+.hero-stats {
+    animation: slideUp 1s ease-out 1s both;
+}
+
+/* Product showcase animations */
+.floating-product {
+    will-change: transform;
+}
+
+.product-showcase .info-card {
+    will-change: transform;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.slide-up {
+    animation: slideUp 1s ease-out 0.3s both;
+}
+
+.slide-up-delayed {
+    animation: slideUp 1s ease-out 0.6s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Featured Tiles */
+.featured-tile {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transform: translateZ(0);
+}
+
+.featured-tile:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Product Cards - Apple-style grid layout */
+.product-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    position: relative;
+    height: 450px;
+    width: 85%; /* Thu nhỏ width từ 100% xuống 85% */
+    margin: 0 auto 2rem auto; /* Center card và tạo khoảng trống 2 bên */
+}
+
+/* Image fills entire card */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 1;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+.product-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #64748b;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Overlay content */
+.product-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .product-content {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Typography */
+.product-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 0.25rem;
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+    text-align: center;
+}
+
+.product-subtitle {
+    font-size: 0.9rem;
+    color: #86868b;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* Color picker */
+.color-picker {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 1rem;
+}
+
+.color-swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.color-swatch:hover {
+    transform: scale(1.1);
+    border-color: #0071e3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.color-swatch.selected {
+    border-color: #0071e3;
+    box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.3);
+}
+
+/* Pricing */
+.product-pricing {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.product-price {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #1d1d1f;
+    line-height: 1.4;
+}
+
+/* Buy button */
+.btn-buy {
+    background: #0071e3;
+    color: white;
+    border: none;
+    border-radius: 980px;
+    padding: 12px 22px;
+    font-size: 1rem;
+    font-weight: 400;
+    width: 100%;
+    transition: all 0.2s ease;
+    letter-spacing: -0.022em;
+}
+
+.btn-buy:hover {
+    background: #0077ed;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.btn-buy:active {
+    transform: translateY(0);
+    background: #006edb;
+}
+
+/* Grid Layout - Remove all conflicting rules and use clean Bootstrap grid */
+.product-item {
+    margin-bottom: 2rem;
+    padding: 0 15px; /* Bootstrap column padding */
+}
+
+/* Remove any display overrides that break Bootstrap grid */
+#productsGrid {
+    /* Let Bootstrap handle the grid display */
+}
+
+.product-badge,
+.btn-quick-view {
+    display: none !important;
+}
+
+/* Bootstrap grid responsive breakpoints */
+@media (min-width: 1200px) {
+    .product-item.col-lg-3 {
+        flex: 0 0 25%; /* 4 columns on large screens */
+        max-width: 25%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .product-item.col-md-6 {
+        flex: 0 0 50%; /* 2 columns on medium screens */
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .product-item.col-sm-12 {
+        flex: 0 0 100%; /* 1 column on small screens */
+        max-width: 100%;
+    }
+    
+    .product-card {
+        height: 380px; /* Smaller height on mobile */
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .product-card {
+        height: 380px;
+    }
+    
+    .product-content {
+        padding: 20px;
+    }
+    
+    .product-title {
+        font-size: 1.25rem;
+    }
+    
+    .color-picker {
+        gap: 6px;
+        margin-bottom: 1rem;
+    }
+    
+    .color-swatch {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 70vh !important;
+        padding: 2rem 0;
+    }
+    
+    .display-3 {
+        font-size: 2.5rem;
+    }
+    
+    .featured-tile {
+        min-height: 250px !important;
+    }
+    
+    .product-image {
+        height: 200px;
+    }
+    
+    .container-fluid {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar, .btn, .modal, .offcanvas, .toast-container {
+        display: none !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .btn-outline-dark {
+        border-width: 2px;
+    }
+    
+    .product-card {
+        border-width: 2px;
+    }
+}
+
+/* Section spacing */
+section {
+    padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: 5rem 0;
+    }
+}
+
+/* Typography refinements */
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.display-3 {
+    font-weight: 300;
+}
+
+.display-5 {
+    font-weight: 300;
+}
+
+/* Utility classes */
+.text-ueh {
+    color: #0F766E !important;
+}
+
+.bg-ueh {
+    background-color: #0F766E !important;
+}
+
+.border-ueh {
+    border-color: #0F766E !important;
+}
+
+/* Enhanced styling for "Wear UEH" text to make it more prominent */
+.wear-ueh-highlight {
+    background: linear-gradient(135deg, #00d4ff 0%, #00bfff 25%, #00e5ff 50%, #40e0d0 75%, #00ffff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    position: relative;
+    display: inline-block;
+}
+
+/* Fallback for browsers that don't support background-clip: text */
+@supports not (-webkit-background-clip: text) {
+    .wear-ueh-highlight {
+        color: #00d4ff !important;
+    }
+}
