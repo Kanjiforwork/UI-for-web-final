@@ -1,5 +1,8 @@
 // UEH Merch Store JavaScript - Simplified and Fixed
 
+// Authentication management
+let currentUser = JSON.parse(localStorage.getItem('ueh-user')) || null;
+
 // Product data
 const products = [
     {
@@ -144,6 +147,10 @@ const content = {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing...');
     console.log('Products array:', products);
+    
+    // Check authentication state
+    checkAuthState();
+    
     // renderProducts(); // VÔ HIỆU HÓA - để product-card.js handle
     setupEventListeners();
 });
@@ -263,7 +270,98 @@ function openQuickView(productId) {
     alert('Quick view feature - Product ID: ' + productId);
 }
 
+// Authentication functions
+function checkAuthState() {
+    const notLoggedIn = document.getElementById('notLoggedIn');
+    const loggedIn = document.getElementById('loggedIn');
+    
+    if (currentUser) {
+        // User is logged in
+        notLoggedIn.classList.add('d-none');
+        loggedIn.classList.remove('d-none');
+        
+        // Update user info
+        updateUserDisplay();
+    } else {
+        // User is not logged in
+        notLoggedIn.classList.remove('d-none');
+        loggedIn.classList.add('d-none');
+    }
+}
+
+function updateUserDisplay() {
+    if (!currentUser) return;
+    
+    // Update avatar
+    const userAvatar = document.getElementById('userAvatar');
+    const firstLetter = currentUser.fullName ? currentUser.fullName.charAt(0).toUpperCase() : 'U';
+    userAvatar.textContent = firstLetter;
+    
+    // Update username
+    const username = document.getElementById('username');
+    username.textContent = currentUser.fullName || currentUser.email.split('@')[0];
+    
+    // Update full name and email in dropdown
+    const userFullName = document.getElementById('userFullName');
+    userFullName.textContent = currentUser.fullName || 'Welcome back!';
+    
+    const userEmail = document.getElementById('userEmail');
+    userEmail.textContent = currentUser.email;
+}
+
+function logout() {
+    // Clear user data
+    currentUser = null;
+    localStorage.removeItem('ueh-user');
+    
+    // Update UI
+    checkAuthState();
+    
+    // Show success message
+    showToast('Logged out successfully!', 'success');
+}
+
+function showToast(message, type = 'info') {
+    const toastContainer = document.getElementById('toastContainer');
+    const toastId = 'toast-' + Date.now();
+    
+    const toastHtml = `
+        <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <div class="rounded me-2" style="width: 20px; height: 20px; background-color: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};"></div>
+                <strong class="me-auto">UEH Merch</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                ${message}
+            </div>
+        </div>
+    `;
+    
+    toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+    
+    const toastElement = document.getElementById(toastId);
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+    
+    // Remove toast element after it's hidden
+    toastElement.addEventListener('hidden.bs.toast', () => {
+        toastElement.remove();
+    });
+}
+
+// Listen for successful login from login page
+window.addEventListener('storage', function(e) {
+    if (e.key === 'ueh-user' && e.newValue) {
+        currentUser = JSON.parse(e.newValue);
+        checkAuthState();
+        showToast('Welcome back! You have been logged in successfully.', 'success');
+    }
+});
+
 // Global functions
 window.addToCart = addToCart;
 window.openQuickView = openQuickView;
 window.selectColor = selectColor;
+window.logout = logout;
+window.showToast = showToast;

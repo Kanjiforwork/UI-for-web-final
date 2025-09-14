@@ -464,7 +464,7 @@
                         backdrop-filter: blur(4px);
                     ">
                         <div class="text-center">
-                            <div class="badge bg-danger text-white px-4 py-2 rounded-pill mb-2" style="font-size: 0.9rem;">
+                            <div class="badge bg-white text-dark px-4 py-2 rounded-pill mb-2" style="font-size: 0.9rem; border: 1px solid #e5e7eb; font-weight: 600;">
                                 Out of Stock
                             </div>
                             <p class="text-muted mb-0" style="font-size: 0.8rem;">Notify when available</p>
