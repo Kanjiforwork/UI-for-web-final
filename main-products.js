@@ -573,8 +573,28 @@
         
         const product = sampleProducts.find(p => p.id === productId);
         if (product) {
-            console.log('Adding to cart:', product.name);
-            showToast(`Added "${product.name}" to cart!`, 'success');
+            // Get selected size and color from the product card
+            const productCard = event.target.closest('.product-card-modern');
+            const selectedSizeBtn = productCard.querySelector('.btn-outline-dark.active');
+            const selectedColorSwatch = productCard.querySelector('.color-swatch.selected');
+            
+            const selectedSize = selectedSizeBtn ? selectedSizeBtn.textContent.trim() : product.sizes[0];
+            const selectedColor = selectedColorSwatch ? selectedColorSwatch.getAttribute('title') : product.colors[0];
+            
+            // Use the cart system
+            if (window.addToCart) {
+                window.addToCart({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    discount_price: product.discount_price,
+                    image_url: product.image_url,
+                    category: product.category
+                }, selectedSize, selectedColor);
+            } else {
+                console.log('Adding to cart:', product.name);
+                showToast(`Added "${product.name}" to cart!`, 'success');
+            }
         }
     }
     
